@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    box-shadow: 0px -1px 5px 0px;;
+}
+
+header p {
+    margin: 0;
+}
+
+.distance-outside {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.top-left {
+    display: flex;
+    gap: 4px;
+}
+
+.logo {
+    height: 40px;
+}
+
+.top-right {
+    display: flex;
+    gap: 32px;
+}
+
+.language {
+    height: 24px;
+    border-radius: 100%;
+    width: 24px;
+    object-fit: cover;
+}
+
+.menu {
+    height: 24px;
+}
