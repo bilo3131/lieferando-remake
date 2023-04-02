@@ -284,5 +284,100 @@ let baguettes = [
         'choice': '',
         'price': 9.50,
     },
+    {
+        'meal': 'Baguette Mix',
+        'description': '',
+        'choice': '',
+        'price': 10.00,
+    },
+    {
+        'meal': 'Baguette Döner',
+        'description': 'mit Tomaten und Zwiebeln',
+        'choice': '',
+        'price': 9.50,
+    }
 ]
 
+let schnitzel = [
+    {
+        'meal': 'Schnitzel Wiener Art',
+        'description': '',
+        'choice': '',
+        'price': 12.50,
+    },
+    {
+        'meal': 'Schnitzel Gorgonzola',
+        'description': 'mit Ananas und Sahnesauce',
+        'choice': '',
+        'price': 13.50,
+    },
+    {
+        'meal': 'Schnitzel Curry',
+        'description': 'mit Curry-Sahnesauce',
+        'choice': '',
+        'price': 13.50,
+    },
+    {
+        'meal': 'Schnitzel Käse',
+        'description': 'mit vier Käsesorten und Sahnesauce',
+        'choice': '',
+        'price': 14.00,
+    },
+    {
+        'meal': 'Jägerschnitzel',
+        'description': 'mit Jägersauce und Pilzen',
+        'choice': '',
+        'price': 14.50,
+    },
+    {
+        'meal': 'Zigeunerschitzel',
+        'description': 'mit Zigeunersauce, Pilzen, Paprika, Zwiebeln und Peperoni',
+        'choice': '',
+        'price': 15.00,
+    },
+    {
+        'meal': 'Hawaii Schnitzel',
+        'description': 'mit Ananas und Marsala-Sahnesauce und mit Käse überbacken',
+        'choice': '',
+        'price': 15.00,
+    }
+]
+
+let burger = [
+    {
+        'meal': 'Hamburger',
+        'description': '',
+        'choice': '',
+        'price': 6.00,
+    },
+    {
+        'meal': 'Doppel Hamburger',
+        'description': '',
+        'choice': '',
+        'price': 7.50,
+    },
+    {
+        'meal': 'Cheeseburger',
+        'description': '',
+        'choice': '',
+        'price': 6.50,
+    },
+    {
+        'meal': 'Doppel Cheeseburger',
+        'description': '',
+        'choice': '',
+        'price': 8.50,
+    },
+    {
+        'meal': 'Chickenburger',
+        'description': '',
+        'choice': '',
+        'price': 6.50,
+    },
+    {
+        'meal': 'Dönerburger',
+        'description': '',
+        'choice': '',
+        'price': 6.50,
+    }
+]
