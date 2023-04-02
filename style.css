@@ -7,7 +7,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    box-shadow: 0px -22px 27px 8px;
+    box-shadow: 0px -16px 24px 5px;
 }
 
 header p {
@@ -60,21 +60,36 @@ header p {
     cursor: pointer;
 }
 
-.row {
+.rows {
     display: flex;
-    flex-direction: row;
-    width: 100%;
+}
+
+main {
+    width: 75%;
+    height: 300vh;
 }
 
 .restaurant {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: -7px 1px 10px -2px;
+    padding-bottom: 8px;
+}
+
+.restaurant p {
+    margin: 0;
+}
+
+.name {
     padding-top: 24px;
     display: flex;
     justify-content: space-between;
 }
 
 .distance-outside-large {
-    padding-left: 300px;
-    padding-right: 300px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 .mainPic {
@@ -82,30 +97,78 @@ header p {
     height: 320px;
     object-fit: cover;
 }
+.valuation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.valuation a:hover {
+    text-decoration: none;
+}
+
+.stars {
+    display: flex;
+    height: 24px;
+}
 
 .icons {
     display: flex;
+    align-items: center;
     gap: 8px;
 }
 
 .icons img {
-    padding: 12px;
+    height: 18px;
+}
+
+.roundBorder {
+    padding: 16px;
     background-color: #ebe9e8;
-    height: 48px;
+    height: 56px !important;
     border-radius: 100%;
     cursor: pointer;
+}
+
+.roundBorder:hover {
+    filter: brightness(95%);
     transition: all 225ms ease-in-out;
 }
 
-.icons img:hover {
-    filter: brightness(96%);
+.dishes {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 4px; */
 }
 
-/* footer {
+.dishes a {
+    text-decoration: none;
+    color: #000000;
+    padding: 4px 8px 4px 8px;
+}
+
+.dishes a:hover {
+    color: #000000;
+    background-color: #ebe9e8;
+    border-radius: 50px;
+}
+
+.search {
+    padding: 8px;
+    height: 36px !important;
+}
+
+.footer {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
     height: 100vh;
-    width: 20px;
-    background-color: aqua;
-} */
+    width: 25%;
+    box-shadow: 8px 24px 16px 4px;
+    /* z-index: 2; */
+}
