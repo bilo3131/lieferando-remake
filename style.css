@@ -66,7 +66,6 @@ header p {
 
 main {
     width: 75%;
-    height: 300vh;
 }
 
 .restaurant {
@@ -92,11 +91,17 @@ main {
     padding-right: 250px;
 }
 
+.distance-outside-large-margin {
+    margin-right: 250px;
+    margin-left: 250px;
+}
+
 .mainPic {
     width: 100%;
     height: 320px;
     object-fit: cover;
 }
+
 .valuation {
     display: flex;
     align-items: center;
@@ -137,7 +142,7 @@ main {
 
 
 /* GUCKEN!!! STICKY OHNE FUNKTION */
-.dishes {
+.dishess {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
@@ -147,15 +152,16 @@ main {
     align-items: center;
     gap: 16px;
 }
+
 /* ------------------------------- */
 
-.dishes a {
+.dishess a {
     text-decoration: none;
     color: #000000;
     padding: 4px 8px 4px 8px;
 }
 
-.dishes a:hover {
+.dishess a:hover {
     color: #000000;
     background-color: #ebe9e8;
     border-radius: 50px;
@@ -193,4 +199,25 @@ footer img {
     margin-top: 40px;
     height: 60px;
     padding-top: 16px;
+}
+
+.groups {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: #FCFCFC;
+}
+
+.block {
+    border: 2px solid #ebe9e8;
+    border-radius: 16px;
+    padding: 16px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+}
+
+.block:hover {
+    background-color: #F5F5F5;
 }

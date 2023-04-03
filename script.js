@@ -381,3 +381,31 @@ let burger = [
         'price': 6.50,
     }
 ]
+
+function render() {
+    let dishes = [beliebt, salate, pizza, calzone, drehspieß, teller, pasta, baguettes, schnitzel, burger];
+
+    for (let i = 0; i < dishes.length; i++) {
+        const dish = dishes[i];
+
+        let groups = document.getElementById('groups');
+        // groups.innerHTML = '';
+
+        for (let j = 0; j < dish.length; j++) {
+            const food = dish[j];
+
+            groups.innerHTML += HTMLTemplate(j, food);
+        }
+    }
+}
+
+function HTMLTemplate(j, food) {
+    return /*html*/ `
+        <div class="block distance-outside-large-margin">
+            <h4>${food['meal']}</h4>
+            <p>${food['description']}</p>
+            <p>${food['choice']}</p>
+            <h4>${food['price']}</h4>
+        </div>
+    `;
+}
