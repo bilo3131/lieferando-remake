@@ -384,25 +384,29 @@ let burger = [
 
 function render() {
     let dishes = [beliebt, salate, pizza, calzone, drehspieß, teller, pasta, baguettes, schnitzel, burger];
+    let dishesString = ['Beliebt', 'Salate', 'Pizza', 'Calzone', 'Drehspießgerichte', 'Tellergerichte', 'Pasta', 'Baguettes', 'Schnitzel', 'Burger'];
 
     for (let i = 0; i < dishes.length; i++) {
         const dish = dishes[i];
 
         let groups = document.getElementById('groups');
-        // groups.innerHTML = '';
+        groups.innerHTML += /*html*/ `<h2 class="title">${dishesString[i]}</h2>`;
 
         for (let j = 0; j < dish.length; j++) {
             const food = dish[j];
 
-            groups.innerHTML += HTMLTemplate(j, food);
+            groups.innerHTML += HTMLTemplate(food);
         }
     }
 }
 
-function HTMLTemplate(j, food) {
+function HTMLTemplate(food) {
     return /*html*/ `
-        <div class="block distance-outside-large-margin">
-            <h4>${food['meal']}</h4>
+        <div class="block">
+            <div class="add">
+                <h4>${food['meal']}</h4>
+                <img class="roundBorder iconDishes" src="img/png/plus.png" alt="">
+            </div>
             <p>${food['description']}</p>
             <p>${food['choice']}</p>
             <h4>${food['price']}</h4>

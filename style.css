@@ -173,6 +173,7 @@ main {
     display: flex;
     align-items: center;
     gap: 4px;
+    font-weight: 600;
 }
 
 .iconDishes {
@@ -220,4 +221,9 @@ footer img {
 
 .block:hover {
     background-color: #F5F5F5;
+}
+
+.add {
+    display: flex;
+    justify-content: space-between;
 }
