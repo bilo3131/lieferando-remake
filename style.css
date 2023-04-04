@@ -142,7 +142,7 @@ main {
 
 
 /* GUCKEN!!! STICKY OHNE FUNKTION */
-.dishess {
+.dishes {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
@@ -152,16 +152,15 @@ main {
     align-items: center;
     gap: 16px;
 }
-
 /* ------------------------------- */
 
-.dishess a {
+.dishes a {
     text-decoration: none;
     color: #000000;
     padding: 4px 8px 4px 8px;
 }
 
-.dishess a:hover {
+.dishes a:hover {
     color: #000000;
     background-color: #ebe9e8;
     border-radius: 50px;

@@ -430,21 +430,21 @@ function render() {
         for (let j = 1; j < dish.length; j++) {
             const food = dish[j];
             addHeadSection(groups, food, dish, i, j);
-            groups.innerHTML += HTMLTemplate(food);
+            groups.innerHTML += HTMLTemplate(food, i, j);
         }
     }
 }
 
-function HTMLTemplate(food) {
+function HTMLTemplate(food, i, j) {
     return /*html*/ `
-        <div class="block">
+        <div class="block" onclick="addMeal(${food}, ${i}, ${j})">
             <div class="add">
                 <h4>${food['meal']}</h4>
                 <img class="roundBorder iconDishes" src="img/png/plus.png" alt="">
             </div>
             <p>${food['description']}</p>
             <p>${food['choice']}</p>
-            <h4>${food['price']}€</h4>
+            <h4>${food['price'].toFixed(2)} €</h4>
         </div>
     `;
 }
@@ -468,5 +468,17 @@ function headSectionHTML(food, i, j) {
 function control(food, i, j) {
     if (food['image'] != '') {
         document.getElementById(`image${i+j}`).classList.remove('d-none');
+    }
+}
+
+function shoppingcart() {
+    let shoppingcart = document.getElementById('shoppingcart');
+    shoppingcart.innerHTML = /*html*/ `<h3>Warenkorb</h3>`;
+    ifVoid(shoppingcart);
+}
+
+function ifVoid(shoppingcart) {
+    if (condition) {
+        
     }
 }
