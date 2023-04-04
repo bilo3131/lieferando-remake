@@ -227,3 +227,14 @@ footer img {
     display: flex;
     justify-content: space-between;
 }
+
+.image {
+    height: 176px;
+    object-fit: cover;
+    margin: 16px 0 16px 0;
+    border-radius: 16px;
+}
+
+.d-none {
+    display: none;
+}
