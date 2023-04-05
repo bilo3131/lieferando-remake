@@ -421,9 +421,9 @@ let burger = [
         'price': 6.50
     }
 ]
+let dishes = [beliebt, salate, pizza, calzone, drehspieß, teller, pasta, baguettes, schnitzel, burger];
 
 function render() {
-    let dishes = [beliebt, salate, pizza, calzone, drehspieß, teller, pasta, baguettes, schnitzel, burger];
     for (let i = 0; i < dishes.length; i++) {
         const dish = dishes[i];
         let groups = document.getElementById('groups');
@@ -453,32 +453,31 @@ function addHeadSection(groups, food, dish, i, j) {
     if (j == 1) {
         j--;
         food = dish[j];
-        groups.innerHTML += headSectionHTML(food, i, j);
-        control(food, i, j);
+        groups.innerHTML += headSectionHTML(food, i);
+        control(food, i);
     }
 }
 
-function headSectionHTML(food, i, j) {
+function headSectionHTML(food, i) {
     return /*html*/ `
-        <img class="image d-none" id="image${i+j}" src="${food['image']}" alt="">
+        <img class="image noHeight" id="${food['title']}${i}" src="${food['image']}" alt="">
         <h2>${food['title']}</h2>
     `;
 }
 
-function control(food, i, j) {
+function control(food, i) {
     if (food['image'] != '') {
-        document.getElementById(`image${i+j}`).classList.remove('d-none');
+        document.getElementById(`${food['title']}${i}`).classList.remove('noHeight');
     }
 }
 
-function shoppingcart() {
-    let shoppingcart = document.getElementById('shoppingcart');
-    shoppingcart.innerHTML = /*html*/ `<h3>Warenkorb</h3>`;
-    ifVoid(shoppingcart);
-}
+function slide() {
+    let left = document.getElementById('left');
+    let right = document.getElementById('right');
+    let slide = document.getElementById('slide');
 
-function ifVoid(shoppingcart) {
-    if (condition) {
-        
-    }
+    left.classList.toggle('d-none');
+    right.classList.toggle('d-none');
+    slide.classList.toggle('slide');
+
 }

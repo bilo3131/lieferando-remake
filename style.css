@@ -72,7 +72,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    box-shadow: -7px 1px 10px -2px;
     padding-bottom: 8px;
 }
 
@@ -91,10 +90,10 @@ main {
     padding-right: 250px;
 }
 
-.distance-outside-large-margin {
+/* .distance-outside-large-margin {
     margin-right: 250px;
     margin-left: 250px;
-}
+} */
 
 .mainPic {
     width: 100%;
@@ -140,19 +139,24 @@ main {
     transition: all 225ms ease-in-out;
 }
 
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px; 
+    height: 70px;
+    scroll-snap-align: 100px;
+}
 
-/* GUCKEN!!! STICKY OHNE FUNKTION */
 .dishes {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
+    /* bottom: 0; */
+    box-shadow: 6px 8px 6px -10px;
+    background-color: #FFFFFF;
+    scroll-behavior: 100px;
 }
-/* ------------------------------- */
 
 .dishes a {
     text-decoration: none;
@@ -167,12 +171,12 @@ main {
 }
 
 .dishesChild {
-    width: 100%;
     overflow-x: hidden;
     display: flex;
     align-items: center;
     gap: 4px;
     font-weight: 600;
+    /* transition: all 225ms ease-in-out; */
 }
 
 .iconDishes {
@@ -236,4 +240,13 @@ footer img {
 
 .d-none {
     display: none;
+}
+
+.slide {
+    justify-content: flex-end;
+    /* transition: all 225ms ease-in-out; */
+}
+
+.noHeight {
+    height: 0;
 }

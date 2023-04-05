@@ -28,15 +28,15 @@
     <div class="rows">
         <main>
             <img class="mainPic" src="img/mainPic.jpg" alt="">
-            <div class="restaurant distance-outside-large">
-                <div class="name">
+            <div class="restaurant">
+                <div class="name distance-outside-large">
                     <h2>Pizzeria Casablanca</h2>
                     <div class="icons">
                         <img class="roundBorder" src="img/png/info.png" alt="">
                         <img class="roundBorder" src="img/png/heart.png" alt="">
                     </div>
                 </div>
-                <div class="valuation">
+                <div class="valuation distance-outside-large">
                     <div class="stars">
                         <img src="img/png/star.png" alt="">
                         <img src="img/png/star.png" alt="">
@@ -44,9 +44,9 @@
                         <img src="img/png/star.png" alt="">
                         <img src="img/png/star.png" alt="">
                     </div>
-                    <a href="#">1.9k Bewertungen</a>
+                    <a href="https://www.google.com/search?q=casablanca+biedenkopf+bewertung&sxsrf=APwXEdct1Ew2HsnQ5urrfroqEQQAoC1RBA%3A1680640628402&ei=dIosZMyKGPeN9u8PoJGTuAE&oq=casablanca+biedenkopf+bewer&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgUIIRCgATIFCCEQoAE6CggAEEcQ1gQQsAM6DQguEK8BEMcBECcQ6gQ6BQgAEIAEOgYIABAHEB46AggmOhYILhCvARDHARDqBBDcBBDeBBDgBBgBOgYIABAWEB5KBAhBGABQnjFYpU9g1VxoAXABeACAAXCIAcAEkgEDNS4ymAEAoAEByAEGwAEB2gEGCAEQARgU&sclient=gws-wiz-serp#">1.9k Bewertungen</a>
                 </div>
-                <div class="icons">
+                <div class="icons distance-outside-large">
                     <img src="img/png/time.png" alt="">
                     <p>20-45 min</p>&#149
                     <img src="img/png/bike.png" alt="">
@@ -55,24 +55,27 @@
                     <p>Min. 10,00 €</p>
                 </div>
                 <div class="dishes">
-                    <img class="roundBorder iconDishes" src="img/png/search.png" alt="">
-                    <div class="dishesChild">
-                        <a href="">Beliebt</a>
-                        <a href="">Salate</a>
-                        <a href="">Pizza</a>
-                        <a href="">Calzone</a>
-                        <a href="">Drehspießgerischte</a>
-                        <a href="">Tellergerichte</a>
-                        <a href="">Pasta</a>
-                        <a href="">Baguettes</a>
-                        <a href="">Schnitzel</a>
-                        <a href="">Burger</a>
+                    <div class="navigation distance-outside-large">
+                        <img class="roundBorder iconDishes" src="img/png/search.png" alt="">
+                        <img class="roundBorder iconDishes arrow d-none" id="left" onclick="slide()" src="img/png/arrowLeft.png" alt="">
+                        <div class="dishesChild" id="slide">
+                            <a href="#Beliebt0">Beliebt</a>
+                            <a href="#Salate1">Salate</a>
+                            <a href="#Pizza2">Pizza</a>
+                            <a href="#Calzone+3">Calzone</a>
+                            <a href="#Drehspießgerichte4">Drehspießgerichte</a>
+                            <a href="#Tellergerichte5">Tellergerichte</a>
+                            <a href="#Pasta+6">Pasta</a>
+                            <a href="#Baguettes7">Baguettes</a>
+                            <a href="#Schnitzel8">Schnitzel</a>
+                            <a href="#Burger9">Burger</a>
+                        </div>
+                        <img class="roundBorder iconDishes arrow" id="right" onclick="slide()" src="img/png/arrowRight.png" alt="">
                     </div>
-                    <img class="roundBorder iconDishes arrow" src="img/png/arrow.png" alt="">
                 </div>
-            </div>
-            <div class="groups distance-outside-large" id="groups">
+                <div class="groups distance-outside-large" id="groups">
 
+                </div>
             </div>
         </main>
 
