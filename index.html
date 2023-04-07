@@ -7,12 +7,13 @@
     <title>Pizzerando</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="icon" href="img/png/logo.png">
     <script src='script.js'></script>
+    <script src='renderMain.js'></script>
+    <script src='renderShoppingcart.js'></script>
 </head>
 
-<body onload="render()">
+<body onload="render(), renderOrder()">
     <header class="distance-outside-small">
         <div class="top-left">
             <img class="logo" src="img/png/logo.png" alt="">
@@ -30,7 +31,7 @@
             <img class="mainPic" src="img/mainPic.jpg" alt="">
             <div class="restaurant">
                 <div class="name distance-outside-large">
-                    <h2>Pizzeria Casablanca</h2>
+                    <h2><b>Pizzeria Casablanca</b></h2>
                     <div class="icons">
                         <img class="roundBorder" src="img/png/info.png" alt="">
                         <img class="roundBorder" src="img/png/heart.png" alt="">
@@ -44,7 +45,9 @@
                         <img src="img/png/star.png" alt="">
                         <img src="img/png/star.png" alt="">
                     </div>
-                    <a href="https://www.google.com/search?q=casablanca+biedenkopf+bewertung&sxsrf=APwXEdct1Ew2HsnQ5urrfroqEQQAoC1RBA%3A1680640628402&ei=dIosZMyKGPeN9u8PoJGTuAE&oq=casablanca+biedenkopf+bewer&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgUIIRCgATIFCCEQoAE6CggAEEcQ1gQQsAM6DQguEK8BEMcBECcQ6gQ6BQgAEIAEOgYIABAHEB46AggmOhYILhCvARDHARDqBBDcBBDeBBDgBBgBOgYIABAWEB5KBAhBGABQnjFYpU9g1VxoAXABeACAAXCIAcAEkgEDNS4ymAEAoAEByAEGwAEB2gEGCAEQARgU&sclient=gws-wiz-serp#">1.9k Bewertungen</a>
+                    <a
+                        href="https://www.google.com/search?q=casablanca+biedenkopf+bewertung&sxsrf=APwXEdct1Ew2HsnQ5urrfroqEQQAoC1RBA%3A1680640628402&ei=dIosZMyKGPeN9u8PoJGTuAE&oq=casablanca+biedenkopf+bewer&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgUIIRCgATIFCCEQoAE6CggAEEcQ1gQQsAM6DQguEK8BEMcBECcQ6gQ6BQgAEIAEOgYIABAHEB46AggmOhYILhCvARDHARDqBBDcBBDeBBDgBBgBOgYIABAWEB5KBAhBGABQnjFYpU9g1VxoAXABeACAAXCIAcAEkgEDNS4ymAEAoAEByAEGwAEB2gEGCAEQARgU&sclient=gws-wiz-serp#">1.9k
+                        Bewertungen</a>
                 </div>
                 <div class="icons distance-outside-large">
                     <img src="img/png/time.png" alt="">
@@ -57,20 +60,22 @@
                 <div class="dishes">
                     <div class="navigation distance-outside-large">
                         <img class="roundBorder iconDishes" src="img/png/search.png" alt="">
-                        <img class="roundBorder iconDishes arrow d-none" id="left" onclick="slide()" src="img/png/arrowLeft.png" alt="">
+                        <img class="roundBorder iconDishes arrow d-none" id="left" onclick="slide()"
+                            src="img/png/arrowLeft.png" alt="">
                         <div class="dishesChild" id="slide">
-                            <a href="#Beliebt0">Beliebt</a>
-                            <a href="#Salate1">Salate</a>
-                            <a href="#Pizza2">Pizza</a>
-                            <a href="#Calzone+3">Calzone</a>
-                            <a href="#Drehspießgerichte4">Drehspießgerichte</a>
-                            <a href="#Tellergerichte5">Tellergerichte</a>
-                            <a href="#Pasta+6">Pasta</a>
-                            <a href="#Baguettes7">Baguettes</a>
-                            <a href="#Schnitzel8">Schnitzel</a>
-                            <a href="#Burger9">Burger</a>
+                            <a href="#Beliebt">Beliebt</a>
+                            <a href="#Salate">Salate</a>
+                            <a href="#Pizza">Pizza</a>
+                            <a href="#Calzone">Calzone</a>
+                            <a href="#Drehspießgerichte">Drehspießgerichte</a>
+                            <a href="#Tellergerichte">Tellergerichte</a>
+                            <a href="#Pasta">Pasta</a>
+                            <a href="#Baguettes">Baguettes</a>
+                            <a href="#Schnitzel">Schnitzel</a>
+                            <a href="#Burger">Burger</a>
                         </div>
-                        <img class="roundBorder iconDishes arrow" id="right" onclick="slide()" src="img/png/arrowRight.png" alt="">
+                        <img class="roundBorder iconDishes arrow" id="right" onclick="slide()"
+                            src="img/png/arrowRight.png" alt="">
                     </div>
                 </div>
                 <div class="groups distance-outside-large" id="groups">
@@ -79,11 +84,24 @@
             </div>
         </main>
 
-        <footer id="shoppingcart">
-            <h3>Warenkorb</h3>
-            <img src="img/png/shoppingBag.png" alt="">
-            <h3>Fülle deinen Warenkorb</h3>
-            <p>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
+        <footer>
+            <div id="shoppingcart">
+
+            </div>
+            <div id="costs" class="d-none">
+                <span>
+                    <p>Zwischensumme</p>
+                    <p></p>
+                </span>
+                <span>
+                    <p>Leferkosten</p>
+                    <p></p>
+                </span>
+                <span>
+                    <p><b>Gesamt</b></p>
+                    <p></p>
+                </span>
+            </div>
         </footer>
     </div>
 
