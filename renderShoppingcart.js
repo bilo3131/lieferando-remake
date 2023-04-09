@@ -1,21 +1,23 @@
 function renderOrder() {
-    let order = myShoppingcart[0]['meal'];
+    let order = myShoppingcart[0]['amount'];
     let shoppingcart = document.getElementById('shoppingcart');
+    let subtotal = 0;
     shoppingcart.innerHTML = '<h3>Warenkorb</h3>';
     for (let i = 0; i < order.length; i++) {
-        const element = order[i];
+        let amount = order[i];
+        let price = myShoppingcart[0]['price'][i];
+        subtotal += price*amount;
+        calculateOrderValue(subtotal);
+        shoppingcart.innerHTML += filledSoppingcartHTML(i);
     }
-    controlShoppingcart(shoppingcart, order);
+    controlShoppingcart(order, shoppingcart);
 }
 
-function controlShoppingcart(shoppingcart, order) {
-
+function controlShoppingcart(order, shoppingcart) {
     if (order.length == 0) {
+        document.getElementById('costs').classList.add('d-none');
         shoppingcart.innerHTML += voidShoppingcartHTML();
-    } 
-    // else {
-    //     shoppingcart.innerHTML += filledSoppingcartHTML(element);
-    // }
+    }
 }
 
 function voidShoppingcartHTML() {
@@ -26,52 +28,108 @@ function voidShoppingcartHTML() {
     `;
 }
 
-function filledSoppingcartHTML(lastAdd) {
+function filledSoppingcartHTML(i) {
     return /*html*/ `
         <div class="orderSection">
             <span class="order">
-                <p class="orderMeal"><b>${myShoppingcart[0]['ammount'][lastAdd]}</b></p>
+                <p class="orderMeal"><b>${myShoppingcart[0]['amount'][i]}</b></p>
                 <span>
-                    <p class="orderMeal"><b>${myShoppingcart[0]['meal'][lastAdd]}</b></p>
-                    <p class="orderPrice">${(myShoppingcart[0]['price'][lastAdd] * myShoppingcart[0]['ammount'][lastAdd]).toFixed(2)} €</p>
+                    <p class="orderMeal"><b>${myShoppingcart[0]['meal'][i]}</b></p>
+                    <p class="orderPrice">${(myShoppingcart[0]['price'][i] * myShoppingcart[0]['amount'][i]).toFixed(2)} €</p>
                 </span>
             </span>
             <div class="addSubstract">
-                <img onclick="addAnother(${lastAdd})" class="roundBorder iconDishes" src="img/png/minus.png" alt="">
-                <img onclick="deleteOne(${lastAdd})" class="roundBorder iconDishes" src="img/png/plus.png" alt="">
+                <img onclick="deleteOne(${i})" class="roundBorder iconDishes" src="img/png/minus.png" alt="">
+                <img onclick="addAnother(${i})" class="roundBorder iconDishes" src="img/png/plus.png" alt="">
             </div>
         </div>
     `;
 }
 
 function alreadyAdded(i, j) {
-    let savedMeals = myShoppingcart[0]['meal'];
     let clickedMeal = dishes[i][j]['meal'];
     let clickedPrice = dishes[i][j]['price'];
-    let lastAdd = myShoppingcart[0]['meal'].length - 1;
-    let notAdded = myShoppingcart[0]['meal'].length;
-    // Die Schleife kontrolliert, ob das "meal" schon bestellt wurde.
-    for (let added = 0; added < savedMeals.length; added++) {
-        if (clickedMeal == savedMeals[added]) {
-            addedMeal(added, lastAdd);
-        }
-        else if (added == lastAdd) {
-            addMeal(clickedMeal, clickedPrice, notAdded);
-        }
+    let orderMeal = myShoppingcart[0]['meal'];
+    let ordersAmount = myShoppingcart[0]['amount'];
+    if (orderMeal.length > 0) {
+        checkOrder(orderMeal, clickedMeal, clickedPrice, ordersAmount);
     }
-    addMeal(clickedMeal, clickedPrice, notAdded);
+    else {
+        addMeal(clickedMeal, clickedPrice)
+    }
 }
 
-// function addedMeal(added, lastAdd) {
-//     myShoppingcart[0]['ammount'][added] += 1;
-//     controlShoppingcart(lastAdd);
-// }
+function addMeal(clickedMeal, clickedPrice) {
+    myShoppingcart[0]['amount'].push(1);
+    myShoppingcart[0]['meal'].push(clickedMeal);
+    myShoppingcart[0]['price'].push(clickedPrice);
+    console.log(myShoppingcart[0]);
+    renderOrder();
+}
 
-// function addMeal(clickedMeal, clickedPrice, lastAdd) {
-//     // in das Array werden die Werte gepusht.
-//     myShoppingcart[0]['ammount'].push(1); //[1, 1, 1]
-//     myShoppingcart[0]['meal'].push(clickedMeal); //['Döner', 'Dönrteller', 'Pizza']
-//     myShoppingcart[0]['price'].push(clickedPrice); //[6.5, 11, 10]
+function checkOrder(orderMeal, clickedMeal, clickedPrice, ordersAmount) {
+    let position = orderMeal.indexOf(clickedMeal);
+    if (position == -1) {
+        addMeal(clickedMeal, clickedPrice);
+    } else {
+        ordersAmount[position]++;
+        renderOrder();
+    }
+}
 
-//     controlShoppingcart(lastAdd);
-// }
+function calculatePrice(subtotal, difference) {
+    delivery = 1.5;
+    let sum = subtotal + delivery;
+    let costs = document.getElementById('costs');
+    costs.classList.remove('d-none');
+    costs.innerHTML = calculateHTML(subtotal.toFixed(2), delivery.toFixed(2), sum.toFixed(2), difference.toFixed(2));
+    if (subtotal >= 10) {
+        document.getElementById('orderValue').classList.add('d-none');        
+    } else {
+        document.getElementById('buy').classList.remove('buy');
+        document.getElementById('buy').classList.add('clickRemove');
+    }
+}
+
+function calculateOrderValue(subtotal){
+    let difference = 10-subtotal;
+    calculatePrice(subtotal, difference);
+}
+
+function calculateHTML(subtotal, delivery, sum, difference) {
+    return /*html*/ `
+        <p class="orderValue" id="orderValue">Noch ${difference} € bis zum Mindestbestellwert</p>
+        <span>
+            <p>Zwischensumme</p>
+            <p>${subtotal} €</p>
+        </span>
+        <span>
+            <p>Leferkosten</p>
+            <p>${delivery} €</p>
+        </span>
+        <span>
+            <p><b>Gesamt</b></p>
+            <p><b>${sum} €</b></p>
+        </span>
+        <button class="buy" id="buy">BESTELLEN</button>
+    `;
+}
+
+function addAnother(i) {
+    myShoppingcart[0]['amount'][i]++;
+    renderOrder();
+}
+
+function deleteOne(i) {
+    myShoppingcart[0]['amount'][i]--;
+    if (myShoppingcart[0]['amount'][i] == 0) {
+        deleteMeal(i);
+    }
+    renderOrder();
+}
+
+function deleteMeal(i) {
+    myShoppingcart[0]['amount'].splice(i, 1);
+    myShoppingcart[0]['price'].splice(i, 1);
+    myShoppingcart[0]['meal'].splice(i, 1);
+}

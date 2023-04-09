@@ -1,4 +1,4 @@
-window.beliebt = [
+let beliebt = [
     {
         'image': '',
         'title': 'Beliebt'
@@ -23,7 +23,7 @@ window.beliebt = [
     }
 ]
 
-window.salate = [
+let salate = [
     {
         'image': 'img/salad.jpg',
         'title': 'Salate'
@@ -66,7 +66,7 @@ window.salate = [
     }
 ]
 
-window.pizza = [
+let pizza = [
     {
         'image': 'img/pizza.jpg',
         'title': 'Pizza'
@@ -121,7 +121,7 @@ window.pizza = [
     }
 ]
 
-window.calzone = [
+let calzone = [
     {
         'image': 'img/calzone.jpg',
         'title': 'Calzone'
@@ -158,7 +158,7 @@ window.calzone = [
     }
 ]
 
-window.drehspieß = [
+let drehspieß = [
     {
         'image': 'img/drehspieß.jpg',
         'title': 'Drehspießgerichte'
@@ -201,7 +201,7 @@ window.drehspieß = [
     }
 ]
 
-window.teller = [
+let teller = [
     {
         'image': 'img/teller.jpg',
         'title': 'Tellergerichte'
@@ -238,7 +238,7 @@ window.teller = [
     }
 ]
 
-window.pasta = [
+let pasta = [
     {
         'image': 'img/pasta.jpg',
         'title': 'Pasta'
@@ -287,7 +287,7 @@ window.pasta = [
     }
 ]
 
-window.baguettes = [
+let baguettes = [
     {
         'image': 'img/baguette.jpg',
         'title': 'Baguettes'
@@ -330,7 +330,7 @@ window.baguettes = [
     }
 ]
 
-window.schnitzel = [
+let schnitzel = [
     {
         'image': 'img/schnitzel.jpg',
         'title': 'Schnitzel'
@@ -379,7 +379,7 @@ window.schnitzel = [
     }
 ]
 
-window.burger = [
+let burger = [
     {
         'image': 'img/burger.jpg',
         'title': 'Burger'
@@ -422,13 +422,12 @@ window.burger = [
     }
 ]
 
-window.myShoppingcart = [
+let myShoppingcart = [
     {
-        'ammount': [],
+        'amount': [],
         'meal': [],
         'price': []
     }
 ]
-
 
 let dishes = [beliebt, salate, pizza, calzone, drehspieß, teller, pasta, baguettes, schnitzel, burger];

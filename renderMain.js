@@ -12,7 +12,6 @@ function render() {
 
 function HTMLTemplate(food, i, j) {
     return /*html*/ `
-    <!-- ruft die Funktion "alreadyAdded()" auf mit den Variablen "i" und "j" -->
         <div class="add" id="${food['meal']}" onclick="alreadyAdded(${i}, ${j})">
             <div class="block">
                 <div class="space">
