@@ -19,7 +19,7 @@ function HTMLTemplate(food, i, j) {
                     <p class="description">${food['description']}</p>
                     <p class="choice" id="choice${food['meal']}">${food['choice']}</p>
                 </div>
-                <h4><b>${food['price'].toFixed(2)} €</b></h4>
+                <h4><b>${food['price'].toFixed(2).replace('.', ',')} €</b></h4>
             </div>
             <img class="roundBorder iconDishes" src="img/png/plus.png" alt="">    
         </div>

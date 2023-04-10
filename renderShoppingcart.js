@@ -1,23 +1,37 @@
+checkLocalStorage();
+
 function renderOrder() {
     let order = myShoppingcart[0]['amount'];
+    let shoppingcartSmall = document.getElementById('shoppingcartSmall');
     let shoppingcart = document.getElementById('shoppingcart');
     let subtotal = 0;
-    shoppingcart.innerHTML = '<h3>Warenkorb</h3>';
+    shoppingcart.innerHTML = generateHeader();
     for (let i = 0; i < order.length; i++) {
         let amount = order[i];
         let price = myShoppingcart[0]['price'][i];
-        subtotal += price*amount;
+        subtotal += price * amount;
         calculateOrderValue(subtotal);
         shoppingcart.innerHTML += filledSoppingcartHTML(i);
     }
-    controlShoppingcart(order, shoppingcart);
+    controlShoppingcart(order, shoppingcart, shoppingcartSmall);
 }
 
-function controlShoppingcart(order, shoppingcart) {
+function generateHeader() {
+    return /*html*/ `
+        <div class="headerBasket">
+            <h2>Warenkorb</h2>
+            <img class="hideShoppingcart" src="img/png/x-mark.png" onclick="hideOrder()">
+        </div>
+    `;
+}
+
+function controlShoppingcart(order, shoppingcart, shoppingcartSmall) {
     if (order.length == 0) {
         document.getElementById('costs').classList.add('d-none');
         shoppingcart.innerHTML += voidShoppingcartHTML();
+        hideSmallBasket(shoppingcartSmall);
     }
+    addLocalStorage();
 }
 
 function voidShoppingcartHTML() {
@@ -35,7 +49,7 @@ function filledSoppingcartHTML(i) {
                 <p class="orderMeal"><b>${myShoppingcart[0]['amount'][i]}</b></p>
                 <span>
                     <p class="orderMeal"><b>${myShoppingcart[0]['meal'][i]}</b></p>
-                    <p class="orderPrice">${(myShoppingcart[0]['price'][i] * myShoppingcart[0]['amount'][i]).toFixed(2)} €</p>
+                    <p class="orderPrice">${(myShoppingcart[0]['price'][i] * myShoppingcart[0]['amount'][i]).toFixed(2).replace('.', ',')} €</p>
                 </span>
             </span>
             <div class="addSubstract">
@@ -63,7 +77,7 @@ function addMeal(clickedMeal, clickedPrice) {
     myShoppingcart[0]['amount'].push(1);
     myShoppingcart[0]['meal'].push(clickedMeal);
     myShoppingcart[0]['price'].push(clickedPrice);
-    console.log(myShoppingcart[0]);
+    addLocalStorage()
     renderOrder();
 }
 
@@ -82,17 +96,18 @@ function calculatePrice(subtotal, difference) {
     let sum = subtotal + delivery;
     let costs = document.getElementById('costs');
     costs.classList.remove('d-none');
-    costs.innerHTML = calculateHTML(subtotal.toFixed(2), delivery.toFixed(2), sum.toFixed(2), difference.toFixed(2));
+    showSmall(sum.toFixed(2).replace('.', ','));
+    costs.innerHTML = calculateHTML(subtotal.toFixed(2).replace('.', ','), delivery.toFixed(2).replace('.', ','), sum.toFixed(2).replace('.', ','), difference.toFixed(2).replace('.', ','));
     if (subtotal >= 10) {
-        document.getElementById('orderValue').classList.add('d-none');        
+        document.getElementById('orderValue').classList.add('d-none');
     } else {
         document.getElementById('buy').classList.remove('buy');
         document.getElementById('buy').classList.add('clickRemove');
     }
 }
 
-function calculateOrderValue(subtotal){
-    let difference = 10-subtotal;
+function calculateOrderValue(subtotal) {
+    let difference = 10 - subtotal;
     calculatePrice(subtotal, difference);
 }
 
@@ -111,7 +126,7 @@ function calculateHTML(subtotal, delivery, sum, difference) {
             <p><b>Gesamt</b></p>
             <p><b>${sum} €</b></p>
         </span>
-        <button class="buy" id="buy">BESTELLEN</button>
+        <button class="buy" id="buy">Bezahlen (${sum} €)</button>
     `;
 }
 
@@ -132,4 +147,56 @@ function deleteMeal(i) {
     myShoppingcart[0]['amount'].splice(i, 1);
     myShoppingcart[0]['price'].splice(i, 1);
     myShoppingcart[0]['meal'].splice(i, 1);
+}
+
+function addLocalStorage() {
+    let basket = myShoppingcart[0];
+    let savedMeal = JSON.stringify(basket['meal']);
+    localStorage.setItem('Meals', savedMeal);
+    let savedCounter = JSON.stringify(basket['amount']);
+    localStorage.setItem('Counter', savedCounter);
+    let savedPrice = JSON.stringify(basket['price']);
+    localStorage.setItem('Price', savedPrice);
+}
+
+function load() {
+    let basket = myShoppingcart[0];
+    let savedMeal = localStorage.getItem('Meals');
+    basket['meal'] = JSON.parse(savedMeal);
+    let savedCounter = localStorage.getItem('Counter');
+    basket['amount'] = JSON.parse(savedCounter);
+    let savedPrice = localStorage.getItem('Price');
+    basket['price'] = JSON.parse(savedPrice);
+}
+
+function checkLocalStorage() {
+    if (localStorage.getItem('Meals') == null) {
+        addLocalStorage();
+    }
+    load();
+}
+
+function showSmall(sum) {
+    shoppingcartSmall.classList.remove('d-none');
+    shoppingcartSmall.innerHTML = buyBtnHTML(sum);
+}
+
+function buyBtnHTML(sum) {
+    return /*html*/ `
+        Warenkorb (${sum}€)
+    `;
+}
+
+function hideSmallBasket(shoppingcartSmall) {
+    shoppingcartSmall.classList.add('d-none');
+}
+
+function showOrders() {
+    document.getElementById('footer').style.display = 'flex';
+    // document.getElementById('hideShoppingcart').classList.remove('d-none');
+}
+
+function hideOrder() {
+    document.getElementById('footer').style.display = 'none';
+    // document.getElementById('hideShoppingcart').classList.remove('d-none');
 }
